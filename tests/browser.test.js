@@ -49,19 +49,22 @@ describe('Clicking "Poppa stacken!"', () => {
 		await alert.sendKeys("Soja");
 		await alert.accept();
 
+        //kolla vad som skrivs ut att ligga överst i stacken
         let stack = await driver.findElement(By.id('top_of_stack')).getText();
         expect(stack).toEqual("Soja");
         
+        //popar item för att tabort de senast till lagda
         let pop = await driver.findElement(By.id('pop'));
         await pop.click();
         alert = await driver.switchTo().alert();
 		await alert.accept();
 
-        //Detta är felet i testet, eftersom om man inte peekar så kommer texten som står i "top_of_stack" forfarande vara det gamla ordet (det som tagits bort)
-        //Därför ger detta felmeddelande! Kommenterar man bort nedan fungerar det.
-        //let peek = await driver.findElement(By.id('peek'));
-        //await peek.click();
+        //Nu när jag kommenterat tillbaka dessa, fungerar testet som det ska. 
+        //Sen kan man ifråga sätta om det är så här det borde fungera. men men.
+        let peek = await driver.findElement(By.id('peek'));
+        await peek.click();
 
+        //Kollar igen vad som skrivs ut att ligga överst i stacken
         stack = await driver.findElement(By.id('top_of_stack')).getText();
         expect(stack).toEqual("Bananer");
 	});
