@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/EricSimonsson/testing-with-jest#readme",
   "dependencies": {
+    "geckodriver": "^3.2.0",
+    "selenium-webdriver": "^4.9.0",
     "underscore": "^1.13.6"
   },
   "devDependencies": {
